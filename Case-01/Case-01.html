@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case-01</title>
+
+
+    <style>
+        body{
+            background-color: rgb(156, 207, 190);
+        }
+        
+        section{
+            display: flex;
+            text-align: center;
+            height: 90vh;
+            align-items: center;
+            margin-left: 50px;
+            
+        }
+        div{
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: rgb(89, 65, 225);
+            
+        }
+
+        img{
+            width: 80px;
+            height: auto;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+        
+        .underline{
+            width: 62%;
+            height: 2px;
+            background-color: rgb(96, 94, 94);
+            bottom: 10px;
+            position: fixed;
+            margin-bottom: 350px;
+            margin-left: 37px;
+        }
+
+        .last img{
+            width: 400px;
+            height: auto;
+            margin-left: 40px;
+            margin-bottom: 69px;
+        }
+
+    </style>
+</head> 
+<body>
+    <section>
+
+        <img src="asset/julientromeur-doctor-400_512.gif" alt="doctor">
+
+        <div>A</div>
+
+        <img src="asset/julientromeur-doctor-400_512.gif" alt="doctor">
+
+        <div>B</div>
+
+        <img src="asset/julientromeur-doctor-400_512.gif" alt="doctor">
+
+        <div>C</div>
+
+        <img src="asset/julientromeur-doctor-400_512.gif" alt="doctor">
+
+        <div>D</div>
+
+        <img src="asset/julientromeur-doctor-400_512.gif" alt="doctor">
+
+        <div>E</div>
+        
+        <img src="asset/julientromeur-doctor-400_512.gif" alt="doctor">
+
+        <div>F</div>
+
+        <div class="underline"></div>
+
+        <div class="last">
+            <img src="asset/output-onlinegiftools.gif" alt="home">
+        </div>
+        
+
+    </section>
+
+    <script>
+        var list = ['A' ,'B', 'C', 'D', 'E', 'F'];
+        
+        setInterval(()=>{
+            list.unshift(list.pop());
+            for(let i = 0; i < list.length; i++){
+                document.querySelectorAll('div')[i].innerText = list[i];
+            }
+        }, 800);
+    </script>
+</body>
+</html>
