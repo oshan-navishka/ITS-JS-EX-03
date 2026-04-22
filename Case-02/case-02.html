@@ -82,9 +82,42 @@
             text-align: center;
             color: white;
         }
+
+        .controls {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            display: flex;
+            gap: 12px;
+            margin: 0;
+            z-index: 1;
+        }
+
+        .controls button {
+            border: none;
+            border-radius: 8px;
+            padding: 10px 18px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .start-btn {
+            background-color: #48c774;
+            color: white;
+        }
+
+        .stop-btn {
+            background-color: #ff5a5f;
+            color: white;
+        }
     </style>
 </head>
 <body>
+
+<div class="controls">
+        <button class="start-btn" id="startBtn">Start</button>
+        <button class="stop-btn" id="stopBtn">Stop</button>
+</div>
 
 <div class="container">
 
@@ -106,20 +139,43 @@
         <div class="box yellow"></div>
     </div>
 
+    
+
 </div>
+
+
 
 <script>
 
     var colors = ["deeppink", "#e33ae3", "red", "green", "blue", "yellow"];
 
     var boxes = document.querySelectorAll(".box");
+    var intervalId = null;
 
-    setInterval(() => {
+    function renderColors() {
         colors.unshift(colors.pop());
         for (let i = 0; i < boxes.length; i++) {
             boxes[i].style.backgroundColor = colors[i];
         }
-    }, 300);
+    }
+
+    function startAnimation() {
+        if (intervalId !== null) {
+            return;
+        }
+
+        intervalId = setInterval(renderColors, 300);
+    }
+
+    function stopAnimation() {
+        clearInterval(intervalId);
+        intervalId = null;
+    }
+
+    document.getElementById("startBtn").addEventListener("click", startAnimation);
+    document.getElementById("stopBtn").addEventListener("click", stopAnimation);
+
+    startAnimation();
 
 </script>
 </body>
